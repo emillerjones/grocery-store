@@ -27,6 +27,9 @@ const inventory = [
  */
 function logNames(items) {
   // TODO: use `forEach`
+  items.forEach(function(items) {
+    console.log(items.name);
+  });
 }
 
 /**
@@ -35,7 +38,21 @@ function logNames(items) {
  */
 function getUppercaseNames(items) {
   // TODO: use `map`
+  let newArray = [];
+  newArray = items.map(function(item){
+    return item.name.toUpperCase();
+  });
+  return newArray;
 }
+// arrow version below, harder for me to get.  above is the one i wrote.
+// function getUppercaseNames(items) {
+//   return items.map(item => item.name.toUpperCase());
+// }
+
+
+
+
+
 
 /**
  * @param {Item[]} items - array of items
@@ -44,7 +61,17 @@ function getUppercaseNames(items) {
  */
 function getItemById(items, id) {
   // TODO: use `find`
+  
+  // let foundItem = items.find(function(item){
+  //   return item.id === id;
+  // });  
+  return items.find(item => item.id===id);
+  // return foundItem;
 }
+
+
+
+
 
 /**
  * @param {Item[]} items - array of items
@@ -53,7 +80,16 @@ function getItemById(items, id) {
  */
 function getItemPriceByName(items, name) {
   // TODO: use a loop!
+  for (let i = 0; i < items.length; i++){
+    if (name === items[i].name){
+      return items[i].price;
+    }
+  }
 }
+
+
+
+
 
 /**
  * @param {Item[]} items - array of items
@@ -62,7 +98,13 @@ function getItemPriceByName(items, name) {
  */
 function getItemsByCategory(items, category) {
   // TODO: use `filter`
+  return items.filter(item => item.category === category)
 }
+
+
+
+
+
 
 /**
  * @param {Item[]} items - array of items
@@ -70,7 +112,12 @@ function getItemsByCategory(items, category) {
  */
 function countItems(items) {
   // TODO: use `reduce`
+  totalQuantity = items.reduce((acc, element) => acc = acc + element.quantity, 0);
+  return totalQuantity;
 }
+
+
+
 
 /**
  * @param {Item[]} items - array of items
@@ -78,7 +125,13 @@ function countItems(items) {
  */
 function getTotalPrice(items) {
   // TODO: use `reduce`
+  return items.reduce((acc, element) => acc = acc + (element.price * element.quantity),0);
 }
+
+
+
+
+
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
 
